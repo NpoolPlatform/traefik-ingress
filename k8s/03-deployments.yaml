@@ -35,6 +35,7 @@ spec:
             - --entrypoints.web.Address=:8000
             - --entrypoints.websecure.Address=:4443
             - --providers.kubernetescrd
+            - --providers.kubernetes
             - --certificatesresolvers.myresolver.acme.tlschallenge
             - --certificatesresolvers.myresolver.acme.email=foo@you.com
             - --certificatesresolvers.myresolver.acme.storage=acme.json
