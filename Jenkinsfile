@@ -65,6 +65,7 @@ pipeline {
       }
       steps {
         sh(returnStdout: true, script: '''
+          set +e
           while true; do
             docker push entropypool/traefik-service:v2.5.3
             if [ $? -eq 0 ]; then
@@ -78,6 +79,7 @@ pipeline {
               break
             fi
           done
+          set -e
         '''.stripIndent())
       }
     }
