@@ -74,7 +74,7 @@ binary: generate-webui $(PRE_TARGET)
 	$(if $(PRE_TARGET),$(DOCKER_RUN_TRAEFIK)) ./script/make.sh generate binary
 
 traefik-binary: $(PRE_TARGET)
-	$(if $(PRE_TARGET),$(DOCKER_BUILD_RUN_TRAEFIK)) sh -c 'cd /go/src/github.com/traefik/traefik/cmd/traefik; go get ...; go build -o /go/src/github.com/traefik/traefik/$(BIND_DIR)/traefik /go/src/github.com/traefik/traefik/cmd/traefik'
+	$(if $(PRE_TARGET),$(DOCKER_BUILD_RUN_TRAEFIK)) go build -o /go/src/github.com/traefik/traefik/$(BIND_DIR)/traefik /go/src/github.com/traefik/traefik/cmd/traefik
 	docker cp traefik-build-dev:/go/src/github.com/traefik/traefik/$(BIND_DIR)/traefik ./dist/traefik
 	docker rm traefik-build-dev
 	docker rmi traefik-dev:HEAD
