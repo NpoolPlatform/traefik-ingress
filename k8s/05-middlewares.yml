@@ -1,0 +1,11 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: cookies-to-body
+  namespace: kube-system
+spec:
+  cookiesToBody:
+    cookieNames:
+      - AppID
+      - UserID
+      - Session
