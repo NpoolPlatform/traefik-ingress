@@ -992,6 +992,14 @@ spec:
                       type: string
                     type: array
                 type: object
+              cookiesToBody:
+                description: CookiesToBody holds the CookiesToBody configuration.
+                properties:
+                  cookieNames:
+                    items:
+                      type: string
+                    type: array
+                type: object
             type: object
         required:
         - metadata
