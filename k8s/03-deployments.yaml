@@ -28,10 +28,12 @@ spec:
         - name: traefik
           # image: traefik:v2.5.3
           image: entropypool/traefik-service:v2.5.3
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           args:
             - --api.insecure
             - --accesslog
+            - --log.level=DEBUG
+            - --log.filePath=/var/log/traefik.log
             - --entrypoints.web.Address=:80
             - --entrypoints.websecure.Address=:443
             - --providers.kubernetesingress
