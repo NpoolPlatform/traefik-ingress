@@ -10,7 +10,6 @@ pipeline {
     stage('Clone traefik ingress') {
       steps {
         git(url: scm.userRemoteConfigs[0].url, branch: '$BRANCH_NAME', changelog: true, credentialsId: 'KK-github-key', poll: true)
-        git(url: scm.userRemoteConfigs[1].url, branch: '$BRANCH_NAME', changelog: true, credentialsId: 'KK-github-key', poll: true)
       }
     }
 
@@ -89,6 +88,12 @@ pipeline {
       when {
         expression { DEPLOY_TARGET == 'true' }
       }
+
+      withCredentials([gitUsernamePassword(credentialsId: 'KK-github-key', gitToolName: 'git-tool')]) {
+        sh 'rm .server-https-ca -rf'
+        sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
+      }
+
       steps {
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/04-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3/traefik-webui-$TARGET_ENV:v2.5.3/g" k8s/03-deployments.yaml'
@@ -104,14 +109,14 @@ pipeline {
           rc=$?
           set -e
           if [ ! 0 -eq $rc ]; then
-            kubectl create secret tls npool-top-tls --cert=./npool.top/tls.crt --key=./npool.top/tls.key -n kube-system
+            kubectl create secret tls npool-top-tls --cert=.server-https-ca/npool.top/tls.crt --key=.server-https-ca/npool.top/tls.key -n kube-system
           fi
           set +e
           kubectl get secret -n kube-system | grep xpool-top-tls
           rc=$?
           set -e
           if [ ! 0 -eq $rc ]; then
-            kubectl create secret tls xpool-top-tls --cert=./xpool.top/tls.crt --key=./xpool.top/tls.key -n kube-system
+            kubectl create secret tls xpool-top-tls --cert=.server-https-ca/xpool.top/tls.crt --key=.server-https-ca/xpool.top/tls.key -n kube-system
           fi
         '''.stripIndent())
       }
