@@ -10,6 +10,7 @@ pipeline {
     stage('Clone traefik ingress') {
       steps {
         git(url: scm.userRemoteConfigs[0].url, branch: '$BRANCH_NAME', changelog: true, credentialsId: 'KK-github-key', poll: true)
+        git(url: scm.userRemoteConfigs[1].url, branch: '$BRANCH_NAME', changelog: true, credentialsId: 'KK-github-key', poll: true)
       }
     }
 
@@ -89,7 +90,6 @@ pipeline {
         expression { DEPLOY_TARGET == 'true' }
       }
       steps {
-        sh 'rm .server-https-ca -rf; git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/04-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3/traefik-webui-$TARGET_ENV:v2.5.3/g" k8s/03-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
@@ -99,7 +99,6 @@ pipeline {
         sh 'kubectl apply -f k8s/04-traefik-dashboard-ingress.yaml'
         sh 'kubectl apply -f k8s/05-middlewares.yaml'
         sh(returnStdout: true, script: '''
-          cd .server-https-ca
           set +e
           kubectl get secret -n kube-system | grep npool-top-tls
           rc=$?
