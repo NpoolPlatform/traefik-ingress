@@ -89,12 +89,11 @@ pipeline {
         expression { DEPLOY_TARGET == 'true' }
       }
 
-      withCredentials([gitUsernamePassword(credentialsId: 'KK-github-key', gitToolName: 'git-tool')]) {
-        sh 'rm .server-https-ca -rf'
-        sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
-      }
-
       steps {
+        withCredentials([gitUsernamePassword(credentialsId: 'KK-github-key', gitToolName: 'git-tool')]) {
+          sh 'rm .server-https-ca -rf'
+          sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
+        }
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/04-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3/traefik-webui-$TARGET_ENV:v2.5.3/g" k8s/03-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
