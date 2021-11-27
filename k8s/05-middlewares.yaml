@@ -40,18 +40,18 @@ metadata:
   name: common-headers
   namespace: kube-system
 spec:
-  restrict_access:
-    headers:
-      accessControlAllowMethods:
-        - "GET"
-        - "POST"
-        - "OPTIONS"
-        - "HEAD"
-        - "PUT"
-        - "DELETE"
-        - "TRACE"
-        - "PATCH"
-      accessControlAllowOriginList:
-          - "http://www.npool.top"
-      accessControlMaxAge: 100
-      addVaryHeader: true
+  headers:
+    accessControlAllowMethods:
+      - "GET"
+      - "POST"
+      - "OPTIONS"
+      - "HEAD"
+      - "PUT"
+      - "DELETE"
+      - "TRACE"
+      - "PATCH"
+    accessControlAllowOriginList:
+        - "http://www.npool.top"
+        - "http://www.npool.top:30080"
+    accessControlMaxAge: 100
+    addVaryHeader: true
