@@ -44,7 +44,12 @@ spec:
     accessControlAllowMethods:
       - "GET"
       - "POST"
-      - "OPTION"
+      - "OPTIONS"
+      - "HEAD"
+      - "PUT"
+      - "DELETE"
+      - "TRACE"
+      - "PATCH"
     accessControlAllowOriginListRegex:
       - "npool.top"
     accessControlMaxAge: 100
