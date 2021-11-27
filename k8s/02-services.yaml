@@ -5,21 +5,16 @@ metadata:
   namespace: kube-system
 
 spec:
-  type: NodePort
   ports:
     - protocol: TCP
       name: web
       port: 80
-      targetPort: 80
-      nodePort: 80
     - protocol: TCP
       name: admin
-      port: 8080
+      port: 38080
     - protocol: TCP
       name: websecure
       port: 443
-      targetPort: 443
-      nodePort: 443
   selector:
     app: traefik
 

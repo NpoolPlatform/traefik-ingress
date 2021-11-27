@@ -45,4 +45,4 @@ spec:
       - path: /traefik/api(/|$)(.*)
         backend:
           serviceName: traefik
-          servicePort: 8080
+          servicePort: 38080

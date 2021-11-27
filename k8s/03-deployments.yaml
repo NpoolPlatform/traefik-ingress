@@ -23,7 +23,11 @@ spec:
       labels:
         app: traefik
     spec:
+      hostNetwork: true
       serviceAccountName: traefik-ingress-controller
+      nodeSelector:
+        type: traefik
+        kubernetes.io/os: linux
       containers:
         - name: traefik
           # image: traefik:v2.5.3
@@ -37,6 +41,7 @@ spec:
             - --entrypoints.web.Address=:80
             - --entrypoints.websecure.Address=:443
             - --entrypoints.websecure.http.tls=true
+            - --entrypoints.traefik.Address=:38080
             - --providers.kubernetesingress
             - --providers.kubernetescrd
 #            - --certificatesResolvers.ali.acme.dnsChallenge.provider=alidns
@@ -54,7 +59,7 @@ spec:
               containerPort: 443
               protocol: TCP
             - name: admin
-              containerPort: 8080
+              containerPort: 38080
               protocol: TCP
 
 ---
