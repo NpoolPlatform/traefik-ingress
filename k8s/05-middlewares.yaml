@@ -31,3 +31,21 @@ spec:
   cookiesToBody:
     cookieNames:
       - Session
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: common-headers
+  namespace: kube-system
+spec:
+  headers:
+    accessControlAllowMethods:
+      - "GET"
+      - "POST"
+      - "OPTION"
+    accessControlAllowOriginListRegex:
+      - "npool.top"
+    accessControlMaxAge: 100
+    addVaryHeader: true
