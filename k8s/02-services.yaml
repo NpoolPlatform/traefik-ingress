@@ -11,7 +11,7 @@ spec:
       name: web
       port: 80
       targetPort: 80
-      nodePort: 30080
+      nodePort: 80
     - protocol: TCP
       name: admin
       port: 8080
@@ -19,7 +19,7 @@ spec:
       name: websecure
       port: 443
       targetPort: 443
-      nodePort: 30443
+      nodePort: 443
   selector:
     app: traefik
 
