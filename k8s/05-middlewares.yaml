@@ -50,9 +50,6 @@ spec:
       - "DELETE"
       - "TRACE"
       - "PATCH"
-    accessControlAllowOriginList:
-      - "http://www.npool.top"
-      - "http://www.npool.top:80"
     accessControlAllowCredentials: TRUE
     accessControlMaxAge: 100
     addVaryHeader: true
