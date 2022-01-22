@@ -32,6 +32,7 @@ RUN  curl -sfL https://raw.githubusercontent.com/client9/misspell/master/install
 # Download goreleaser binary to bin folder in $GOPATH
 RUN curl -sfL https://install.goreleaser.com/github.com/goreleaser/goreleaser.sh -o /tmp/goreleaser.sh
 RUN sed -i 's#http_download "${tmpdir}/${CHECKSUM}" "${CHECKSUM_URL}"#http_download "${tmpdir}/${CHECKSUM}" "${CHECKSUM_URL}"; sed "/sbom/d" ${tmpdir}/${CHECKSUM}#g' /tmp/goreleaser.sh
+RUN chmod a+x /tmp/goreleaser.sh
 RUN /tmp/goreleaser.sh
 
 WORKDIR /go/src/github.com/traefik/traefik
