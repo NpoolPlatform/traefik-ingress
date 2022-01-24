@@ -51,7 +51,6 @@ spec:
       - "TRACE"
       - "PATCH"
     accessControlAllowCredentials: TRUE
-    accessControlAllowOrigin: "*"
     accessControlMaxAge: 100
     addVaryHeader: true
 
