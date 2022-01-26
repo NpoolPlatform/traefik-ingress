@@ -51,7 +51,6 @@ spec:
       - "TRACE"
       - "PATCH"
     accessControlAllowCredentials: TRUE
-    accessControlAllowOrigin: "*"
     accessControlAllowHeaders:
       - "X-App-ID"
       - "X-User-ID"
@@ -66,3 +65,27 @@ spec:
       - "X-Login-Verify"
     accessControlMaxAge: 100
     addVaryHeader: true
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: http-redirect-https-testing
+  namespace: kube-system
+spec:
+  redirectRegex:
+    regex: ^http://([-a-zA-Z0-9|.]*):8080/(.*)
+    replacement: https://${1}:38443/${2}
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: http-redirect-https
+  namespace: kube-system
+spec:
+  redirectRegex:
+    regex: ^http://([-a-zA-Z0-9|.]*)/(.*)
+    replacement: https://${1}/${2}
