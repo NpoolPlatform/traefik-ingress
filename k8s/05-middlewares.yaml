@@ -55,13 +55,13 @@ spec:
     accessControlAllowHeaders:
       - "X-App-ID"
       - "X-User-ID"
-      - "X-App-Login-Session-ID"
+      - "X-App-User-Token"
       - "X-Locale"
       - "X-Login-Verify"
     accessControlExposeHeaders:
       - "X-App-ID"
       - "X-User-ID"
-      - "X-App-Login-Session-ID"
+      - "X-App-User-Token"
       - "X-Locale"
       - "X-Login-Verify"
     accessControlMaxAge: 100
