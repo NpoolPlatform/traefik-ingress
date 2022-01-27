@@ -1,36 +1,36 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: cookies-appid-to-body
+  name: headers-appid-to-body
   namespace: kube-system
 spec:
-  cookiesToBody:
-    cookieNames:
-      - AppID
+  headersToBody:
+    headerNames:
+      - X-App-ID
 
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: cookies-userid-to-body
+  name: headers-userid-to-body
   namespace: kube-system
 spec:
-  cookiesToBody:
-    cookieNames:
-      - UserID
+  headersToBody:
+    headerNames:
+      - X-User-ID
 
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: cookies-session-to-body
+  name: headers-app-login-token-to-body
   namespace: kube-system
 spec:
-  cookiesToBody:
-    cookieNames:
-      - Session
+  headersToBody:
+    headerNames:
+      - X-App-Login-Token
 
 ---
 
@@ -51,6 +51,18 @@ spec:
       - "TRACE"
       - "PATCH"
     accessControlAllowCredentials: TRUE
+    accessControlAllowHeaders:
+      - "X-App-ID"
+      - "X-User-ID"
+      - "X-App-User-Token"
+      - "X-Locale"
+      - "X-Login-Verify"
+    accessControlExposeHeaders:
+      - "X-App-ID"
+      - "X-User-ID"
+      - "X-App-User-Token"
+      - "X-Locale"
+      - "X-Login-Verify"
     accessControlMaxAge: 100
     addVaryHeader: true
 
