@@ -5,8 +5,8 @@ metadata:
   namespace: kube-system
 spec:
   headersToBody:
-    cookieNames:
-      - AppID
+    headerNames:
+      - X-App-ID
 
 ---
 
@@ -17,20 +17,20 @@ metadata:
   namespace: kube-system
 spec:
   headersToBody:
-    cookieNames:
-      - UserID
+    headerNames:
+      - X-User-ID
 
 ---
 
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
-  name: headers-app-login-session-to-body
+  name: headers-app-login-token-to-body
   namespace: kube-system
 spec:
   headersToBody:
-    cookieNames:
-      - AppLoginSession
+    headerNames:
+      - X-App-Login-Token
 
 ---
 
