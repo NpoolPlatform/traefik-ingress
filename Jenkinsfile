@@ -35,7 +35,7 @@ pipeline {
           rc=$?
           set -e
           if [ 0 -eq $rc ]; then
-            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1
+            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1 | true
           fi
         '''.stripIndent())
         sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1 .'
@@ -52,7 +52,7 @@ pipeline {
             rc=$?
             set -e
             if [ 0 -eq $rc ]; then
-              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1
+              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 | true
             fi
           '''.stripIndent())
           sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 .'
