@@ -35,10 +35,10 @@ pipeline {
           rc=$?
           set -e
           if [ 0 -eq $rc ]; then
-            docker rmi entropypool/traefik-service:v2.5.3
+            docker rmi entropypool/traefik-service:v2.5.3.1
           fi
         '''.stripIndent())
-        sh 'cd .traefik-release; docker build -t entropypool/traefik-service:v2.5.3 .'
+        sh 'cd .traefik-release; docker build -t entropypool/traefik-service:v2.5.3.1 .'
 
         nodejs('nodejs') {
           sh 'cd .traefik/webui; npm install'
@@ -52,10 +52,10 @@ pipeline {
             rc=$?
             set -e
             if [ 0 -eq $rc ]; then
-              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3
+              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1
             fi
           '''.stripIndent())
-          sh 'cd .webui; docker build -t entropypool/traefik-webui-$TARGET_ENV:v2.5.3 .'
+          sh 'cd .webui; docker build -t entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 .'
         }
       }
     }
@@ -68,14 +68,14 @@ pipeline {
         sh(returnStdout: true, script: '''
           set +e
           while true; do
-            docker push entropypool/traefik-service:v2.5.3
+            docker push entropypool/traefik-service:v2.5.3.1
             if [ $? -eq 0 ]; then
               break
             fi
           done
-        
+
           while true; do
-            docker push entropypool/traefik-webui-$TARGET_ENV:v2.5.3
+            docker push entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1
             if [ $? -eq 0 ]; then
               break
             fi
@@ -96,7 +96,7 @@ pipeline {
           sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
         }
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/04-traefik-dashboard-ingress.yaml'
-        sh 'sed -i "s/traefik-webui-development:v2.5.3/traefik-webui-$TARGET_ENV:v2.5.3/g" k8s/03-deployments.yaml'
+        sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/03-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
         sh 'kubectl apply -f k8s/01-ingress.yaml'
         sh 'kubectl apply -f k8s/02-services.yaml'

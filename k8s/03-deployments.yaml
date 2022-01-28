@@ -31,7 +31,7 @@ spec:
       containers:
         - name: traefik
           # image: traefik:v2.5.3
-          image: entropypool/traefik-service:v2.5.3
+          image: entropypool/traefik-service:v2.5.3.1
           imagePullPolicy: Always
           args:
             - --api.insecure
@@ -83,7 +83,7 @@ spec:
     spec:
       containers:
         - name: traefik-webui
-          image: entropypool/traefik-webui-development:v2.5.3
+          image: entropypool/traefik-webui-development:v2.5.3.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
