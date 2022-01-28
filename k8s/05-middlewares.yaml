@@ -37,6 +37,45 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
+  name: app-rbac-auth
+  namespace: kube-system
+spec:
+  rbacAuth:
+    headerNames:
+      - X-App-ID
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: app-user-rbac-auth
+  namespace: kube-system
+spec:
+  rbacAuth:
+    headerNames:
+      - X-App-ID
+      - X-User-ID
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: app-user-role-rbac-auth
+  namespace: kube-system
+spec:
+  rbacAuth:
+    headerNames:
+      - X-App-ID
+      - X-User-ID
+      - X-App-Login-Token
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
   name: common-headers
   namespace: kube-system
 spec:
