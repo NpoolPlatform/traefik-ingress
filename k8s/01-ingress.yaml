@@ -992,10 +992,18 @@ spec:
                       type: string
                     type: array
                 type: object
-              cookiesToBody:
-                description: CookiesToBody holds the CookiesToBody configuration.
+              rbacAuth:
+                description: RBACAuth holds the RBACAuth configuration.
                 properties:
-                  cookieNames:
+                  headerNames:
+                    items:
+                      type: string
+                    type: array
+                type: object
+              headersToBody:
+                description: HeadersToBody holds the HeadersToBody configuration.
+                properties:
+                  headerNames:
                     items:
                       type: string
                     type: array
