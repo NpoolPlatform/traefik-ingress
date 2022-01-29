@@ -6,11 +6,9 @@ metadata:
   annotations:
     k8s.kuboard.cn/displayName: traefik-webui
     k8s.kuboard.cn/workload: traefik-webui
-    nginx.com/sticky-cookie-services: "serviceName=traefik-admin srv_id expires=1h path=/"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    kubernetes.io/ingress.class: "devops-vpn-nginx-internal"
-    nginx.ingress.kubernetes.io/cors-allow-origin: '*'
-    nginx.ingress.kubernetes.io/enable-cors: "true"
+    kubernetes.io/ingress.class: "traefik-internet-vpn"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure, web
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-common-headers@kubernetescrd
 spec:
   rules:
   - host: traefik-webui.internal-devops.development.npool.top
@@ -31,18 +29,28 @@ metadata:
   annotations:
     k8s.kuboard.cn/displayName: traefik-service
     k8s.kuboard.cn/workload: traefik-service
-    nginx.com/sticky-cookie-services: "serviceName=traefik-service srv_id expires=1h path=/"
-    nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    nginx.ingress.kubernetes.io/rewrite-target: /api/$2
-    kubernetes.io/ingress.class: "devops-vpn-nginx-internal"
-    nginx.ingress.kubernetes.io/cors-allow-origin: '*'
-    nginx.ingress.kubernetes.io/enable-cors: "true"
+    kubernetes.io/ingress.class: "traefik-internet-vpn"
+    traefik.ingress.kubernetes.io/router.entrypoints: websecure, web
+    traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-traefik-prefix@kubernetescrd,
+                                                      kube-system-common-headers@kubernetescrd
 spec:
   rules:
   - host: traefik-api.internal-devops.development.npool.top
     http:
       paths:
-      - path: /traefik/api(/|$)(.*)
+      - path: /traefik/api
         backend:
           serviceName: traefik
           servicePort: 38080
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: strip-traefik-prefix
+  namespace: kube-system
+spec:
+  stripPrefix:
+    prefixes:
+      - /traefik
