@@ -126,6 +126,13 @@ pipeline {
           if [ ! 0 -eq $rc ]; then
             kubectl create secret tls xpool-top-tls --cert=.server-https-ca/xpool.top/tls.crt --key=.server-https-ca/xpool.top/tls.key -n kube-system
           fi
+          set +e
+          kubectl get secret -n kube-system | grep procyon-vip-tls
+          rc=$?
+          set -e
+          if [ ! 0 -eq $rc ]; then
+            kubectl create secret tls procyon-vip-tls --cert=.server-https-ca/procyon.vip/tls.crt --key=.server-https-ca/procyon.vip/tls.key -n kube-system
+          fi
         '''.stripIndent())
       }
     }
