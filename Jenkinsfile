@@ -107,8 +107,10 @@ pipeline {
         sh 'kubectl apply -f k8s/01-ingress.yaml'
         sh 'kubectl apply -f k8s/02-services.yaml'
         sh 'kubectl apply -f k8s/03-deployments.yaml'
-        sh 'kubectl apply -f k8s/04-traefik-dashboard-ingress.yaml'
-        sh 'kubectl apply -f k8s/05-middlewares.yaml'
+        sh 'kubectl apply -f k8s/04-services-vpn.yaml'
+        sh 'kubectl apply -f k8s/05-deployments-vpn.yaml'
+        sh 'kubectl apply -f k8s/06-middlewares.yaml'
+        sh 'kubectl apply -f k8s/07-traefik-dashboard-ingress.yaml'
         sh(returnStdout: true, script: '''
           set +e
           kubectl get secret -n kube-system | grep npool-top-tls
