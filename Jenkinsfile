@@ -101,7 +101,7 @@ pipeline {
           sh 'rm .server-https-ca -rf'
           sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
         }
-        sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/04-traefik-dashboard-ingress.yaml'
+        sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/07-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/03-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
         sh 'kubectl apply -f k8s/01-ingress.yaml'
