@@ -68,13 +68,12 @@ metadata:
 spec:
   headers:
     accessControlAllowCredentials: TRUE
-    accessControlAllowOriginList:
-      - "*"
     customResponseHeaders:
       Connection: "keep-alive"
       Access-Control-Allow-Headers: "X-App-ID,X-User-ID,X-App-User-Token,X-Locale,X-Login-Verify,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
       Access-Control-Expose-Headers: "X-App-ID,X-User-ID,X-App-User-Token,X-Locale,X-Login-Verify,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
       Access-Control-Allow-Methods: "GET,POST,OPTIONS,HEAD,PUT,DELETE,TRACE,PATCH"
+      Access-Control-Allow-Origin: "*"
     accessControlMaxAge: 100
     addVaryHeader: true
 
