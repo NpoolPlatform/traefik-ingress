@@ -71,7 +71,7 @@ spec:
     accessControlAllowHeaders: 
       - X-App-ID
       - X-User-ID
-      - X-App-User-Token
+      - X-App-Login-Token
       - X-Locale
       - X-Login-Verify
       - DNT
@@ -86,7 +86,7 @@ spec:
     accessControlExposeHeaders:
       - X-App-ID
       - X-User-ID
-      - X-App-User-Token
+      - X-App-Login-Token
       - X-Locale
       - X-Login-Verify
       - DNT
@@ -109,6 +109,7 @@ spec:
       - PATCH
     accessControlAllowOriginList:
       - https://genesis.internal-devops.development.xpool.top
+      - https://www.procyon.vip
     accessControlMaxAge: 100
     addVaryHeader: true
 
