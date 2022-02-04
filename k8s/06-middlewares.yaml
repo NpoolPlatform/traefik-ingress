@@ -110,6 +110,7 @@ spec:
     accessControlAllowOriginList:
       - https://genesis.internal-devops.development.xpool.top
       - https://www.procyon.vip
+      - https://dashboard.xpool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
