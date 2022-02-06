@@ -67,13 +67,50 @@ metadata:
   namespace: kube-system
 spec:
   headers:
-    accessControlAllowCredentials: TRUE
-    customResponseHeaders:
-      Connection: "keep-alive"
-      Access-Control-Allow-Headers: "X-App-ID,X-User-ID,X-App-User-Token,X-Locale,X-Login-Verify,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
-      Access-Control-Expose-Headers: "X-App-ID,X-User-ID,X-App-User-Token,X-Locale,X-Login-Verify,DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization"
-      Access-Control-Allow-Methods: "GET,POST,OPTIONS,HEAD,PUT,DELETE,TRACE,PATCH"
-      Access-Control-Allow-Origin: "*"
+    accessControlAllowCredentials: true
+    accessControlAllowHeaders: 
+      - X-App-ID
+      - X-User-ID
+      - X-App-Login-Token
+      - X-Locale
+      - X-Login-Verify
+      - DNT
+      - X-CustomHeader
+      - Keep-Alive
+      - User-Agent
+      - X-Requested-With
+      - If-Modified-Since
+      - Cache-Control
+      - Content-Type
+      - Authorization
+    accessControlExposeHeaders:
+      - X-App-ID
+      - X-User-ID
+      - X-App-Login-Token
+      - X-Locale
+      - X-Login-Verify
+      - DNT
+      - X-CustomHeader
+      - Keep-Alive
+      - User-Agent
+      - X-Requested-With
+      - If-Modified-Since
+      - Cache-Control
+      - Content-Type
+      - Authorization
+    accessControlAllowMethods:
+      - GET
+      - POST
+      - OPTIONS
+      - HEAD
+      - PUT
+      - DELETE
+      - TRACE
+      - PATCH
+    accessControlAllowOriginList:
+      - https://genesis.internal-devops.development.xpool.top
+      - https://www.procyon.vip
+      - https://dashboard.xpool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
