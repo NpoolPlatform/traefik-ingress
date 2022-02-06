@@ -37,7 +37,7 @@ spec:
           args:
             - --api.insecure
             - --accesslog
-            - --log.level=DEBUG
+            - --log.level=INFO
             - --log.filePath=/var/log/traefik.log
             - --entrypoints.web.Address=:80
             - --entrypoints.websecure.Address=:443
