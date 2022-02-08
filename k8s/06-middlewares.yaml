@@ -68,7 +68,7 @@ metadata:
 spec:
   headers:
     accessControlAllowCredentials: true
-    accessControlAllowHeaders: 
+    accessControlAllowHeaders:
       - X-App-ID
       - X-User-ID
       - X-App-Login-Token
