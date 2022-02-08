@@ -97,10 +97,6 @@ pipeline {
       }
 
       steps {
-        withCredentials([gitUsernamePassword(credentialsId: 'KK-github-key', gitToolName: 'git-tool')]) {
-          sh 'rm .server-https-ca -rf'
-          sh 'git clone https://github.com/NpoolPlatform/server-https-ca.git .server-https-ca'
-        }
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/07-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/03-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
@@ -111,29 +107,6 @@ pipeline {
         sh 'kubectl apply -f k8s/05-deployments-vpn.yaml'
         sh 'kubectl apply -f k8s/06-middlewares.yaml'
         sh 'kubectl apply -f k8s/07-traefik-dashboard-ingress.yaml'
-        sh(returnStdout: true, script: '''
-          set +e
-          kubectl get secret -n kube-system | grep npool-top-tls
-          rc=$?
-          set -e
-          if [ ! 0 -eq $rc ]; then
-            kubectl create secret tls npool-top-tls --cert=.server-https-ca/npool.top/tls.crt --key=.server-https-ca/npool.top/tls.key -n kube-system
-          fi
-          set +e
-          kubectl get secret -n kube-system | grep xpool-top-tls
-          rc=$?
-          set -e
-          if [ ! 0 -eq $rc ]; then
-            kubectl create secret tls xpool-top-tls --cert=.server-https-ca/xpool.top/tls.crt --key=.server-https-ca/xpool.top/tls.key -n kube-system
-          fi
-          set +e
-          kubectl get secret -n kube-system | grep procyon-vip-tls
-          rc=$?
-          set -e
-          if [ ! 0 -eq $rc ]; then
-            kubectl create secret tls procyon-vip-tls --cert=.server-https-ca/procyon.vip/tls.crt --key=.server-https-ca/procyon.vip/tls.key -n kube-system
-          fi
-        '''.stripIndent())
       }
     }
 
