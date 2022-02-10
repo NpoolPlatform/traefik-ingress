@@ -111,6 +111,8 @@ spec:
       - https://genesis.internal-devops.development.xpool.top
       - https://www.procyon.vip
       - https://dashboard.xpool.top
+      - https://swagger-ui.internal-devops.development.npool.top
+      - https://dashboard.procyon.vip
     accessControlMaxAge: 100
     addVaryHeader: true
 
