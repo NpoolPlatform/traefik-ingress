@@ -4,8 +4,9 @@ commonLabels:
 resources:
 - 01-ingress.yaml
 - 02-services.yaml
-- 03-deployments.yaml
-- 04-services-vpn.yaml
-- 05-deployments-vpn.yaml
-- 06-middlewares.yaml
-- 07-traefik-dashboard-ingress.yaml
+- 03-service-account.yaml
+- 04-deployments.yaml
+- 05-services-vpn.yaml
+- 06-deployments-vpn.yaml
+- 07-middlewares.yaml
+- 08-traefik-dashboard-ingress.yaml
