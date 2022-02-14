@@ -119,7 +119,7 @@ spec:
       - https://dashboard.npool.top
       - https://dashboard.npool.top:38443
       - https://swagger-ui.internal-devops.development.npool.top
-      
+      - http://traefik-webui.internal-devops.development.npool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
