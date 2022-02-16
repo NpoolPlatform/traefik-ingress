@@ -100,7 +100,14 @@ pipeline {
         sh 'sed -i "s/internal-devops.development.npool.top/internal-devops.$TARGET_ENV.npool.top/g" k8s/08-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/04-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
-        sh 'kubectl apply -k k8s'
+        sh 'kubectl apply -f k8s/01-ingress.yaml'
+        sh 'kubectl apply -f k8s/02-services.yaml'
+        sh 'kubectl apply -f k8s/03-service-account.yaml'
+        sh 'kubectl apply -f k8s/04-deployments.yaml'
+        sh 'kubectl apply -f k8s/05-services-vpn.yaml'
+        sh 'kubectl apply -f k8s/06-deployments-vpn.yaml'
+        sh 'kubectl apply -f k8s/07-middlewares.yaml'
+        sh 'kubectl apply -f k8s/08-traefik-dashboard-ingress.yaml'
       }
     }
 
