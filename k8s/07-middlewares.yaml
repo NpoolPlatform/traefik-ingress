@@ -114,11 +114,11 @@ spec:
       - https://www.procyon.vip
       - https://procyon.vip
       - https://www.npool.top
-      - https://www.npool.top:38443
+      - https://www.npool.top:20402
       - https://dashboard.xpool.top
       - https://dashboard.procyon.vip
       - https://dashboard.npool.top
-      - https://dashboard.npool.top:38443
+      - https://dashboard.npool.top:20402
       - https://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
       - https://www.ohhash.com
@@ -135,8 +135,8 @@ metadata:
   namespace: kube-system
 spec:
   redirectRegex:
-    regex: ^http://([-a-zA-Z0-9|.]*):8080/(.*)
-    replacement: https://${1}:38443/${2}
+    regex: ^http://([-a-zA-Z0-9|.]*):20401/(.*)
+    replacement: https://${1}:20402/${2}
 
 ---
 
