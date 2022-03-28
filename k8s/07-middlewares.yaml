@@ -122,6 +122,7 @@ spec:
       - https://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
       - https://www.ohhash.com
+      - https://dashboard.ohhash.com
       - https://ohhash.com
     accessControlMaxAge: 100
     addVaryHeader: true
