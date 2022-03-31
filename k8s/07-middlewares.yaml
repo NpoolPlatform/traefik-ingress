@@ -25,6 +25,18 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
+  name: headers-langid-to-body
+  namespace: kube-system
+spec:
+  headersToBody:
+    headerNames:
+      - X-Lang-ID
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
   name: headers-app-login-token-to-body
   namespace: kube-system
 spec:
