@@ -133,6 +133,7 @@ spec:
       - https://dashboard.procyon.vip
       - https://dashboard.npool.top
       - https://dashboard.npool.top:20402
+      - https://procdashboard.npool.top:20402
       - https://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
       - https://dashboard.ohhash.com
