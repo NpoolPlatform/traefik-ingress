@@ -7,7 +7,6 @@ spec:
   headersToBody:
     headerNames:
       - X-App-ID
-      - X-Lang-ID
 
 ---
 
@@ -56,7 +55,6 @@ spec:
   rbacAuth:
     headerNames:
       - X-App-ID
-      - X-Lang-ID
 
 ---
 
@@ -69,7 +67,6 @@ spec:
   rbacAuth:
     headerNames:
       - X-App-ID
-      - X-Lang-ID
       - X-User-ID
       - X-App-Login-Token
 
