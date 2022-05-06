@@ -11,16 +11,15 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-common-headers@kubernetescrd
 spec:
   rules:
-  - host: traefik-webui.internal-devops.development.npool.top
-    http:
-      paths:
-      - path: /traefik/dashboard
-        backend:
-          serviceName: traefik-webui
-          servicePort: 80
+    - host: traefik-webui.internal-devops.development.npool.top
+      http:
+        paths:
+          - path: /traefik/dashboard
+            backend:
+              serviceName: traefik-webui
+              servicePort: 80
 
 ---
-
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -31,20 +30,20 @@ metadata:
     k8s.kuboard.cn/workload: traefik-service
     kubernetes.io/ingress.class: "traefik-internet-vpn"
     traefik.ingress.kubernetes.io/router.entrypoints: websecure, web
-    traefik.ingress.kubernetes.io/router.middlewares: kube-system-strip-traefik-prefix@kubernetescrd,
-                                                      kube-system-common-headers@kubernetescrd
+    traefik.ingress.kubernetes.io/router.middlewares:
+      kube-system-strip-traefik-prefix@kubernetescrd,
+      kube-system-common-headers@kubernetescrd
 spec:
   rules:
-  - host: traefik-api.internal-devops.development.npool.top
-    http:
-      paths:
-      - path: /traefik/api
-        backend:
-          serviceName: traefik
-          servicePort: 38080
+    - host: traefik-api.internal-devops.development.npool.top
+      http:
+        paths:
+          - path: /traefik/api
+            backend:
+              serviceName: traefik
+              servicePort: 38080
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
