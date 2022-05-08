@@ -9,7 +9,6 @@ spec:
       - X-App-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -21,7 +20,6 @@ spec:
       - X-User-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -33,7 +31,6 @@ spec:
       - X-Lang-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -45,7 +42,6 @@ spec:
       - X-App-Login-Token
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -57,7 +53,6 @@ spec:
       - X-App-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -71,7 +66,6 @@ spec:
       - X-App-Login-Token
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -145,7 +139,6 @@ spec:
     addVaryHeader: true
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -157,7 +150,6 @@ spec:
     replacement: https://${1}:20402/${2}
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
