@@ -5,7 +5,6 @@ RUN yum install -y epel-release && \
     yum install -y nginx && \
     yum clean all
 
-RUN mkdir -p /usr/share/nginx/html/traefik/dashboard
 COPY static/ /usr/share/nginx/html/traefik/dashboard
 COPY nginx.conf.template /etc/nginx/nginx.conf
 RUN rm -rf /usr/share/nginx/html/index.html
