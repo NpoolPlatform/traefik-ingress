@@ -1,0 +1,54 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: kube-system
+  name: traefik-vpn-developer
+  labels:
+    app: traefik-vpn-developer
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-vpn-developer
+  template:
+    metadata:
+      labels:
+        app: traefik-vpn-developer
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      serviceAccountName: traefik-ingress-controller
+      nodeSelector:
+        type: traefik-vpn-developer
+        kubernetes.io/os: linux
+      containers:
+        - name: traefik-vpn-developer
+          # image: traefik:v2.5.3
+          image: uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1
+          imagePullPolicy: Always
+          args:
+            - --api.insecure
+            - --accesslog
+            - --log.level=INFO
+            - --log.filePath=/var/log/traefik.log
+            - --entrypoints.web.Address=:80
+            - --entrypoints.websecure.Address=:443
+            - --entrypoints.websecure.http.tls=true
+            - --entrypoints.traefik.Address=:38080
+            - --providers.kubernetesingress
+            - --providers.kubernetescrd
+#            - --certificatesResolvers.ali.acme.dnsChallenge.provider=alidns
+#            - --certificatesResolvers.ali.acme.email=tanghong@1674558446506420.onaliyun.com
+#            - --certificatesResolvers.ali.acme.storage=/etc/acme/acme.json
+            # Please note that this is the staging Let's Encrypt server.
+            # Once you get things working, you should remove that whole line altogether.
+#            - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
+            - --providers.kubernetesingress.ingressclass=traefik-internet-vpn
+          ports:
+            - name: web
+              containerPort: 80
+              protocol: TCP
+            - name: websecure
+              containerPort: 443
+              protocol: TCP
