@@ -2,11 +2,13 @@ commonLabels:
   # app: traefik-ingress
 
 resources:
-- 01-ingress.yaml
-- 02-services.yaml
-- 03-service-account.yaml
-- 04-deployments.yaml
-- 05-services-vpn.yaml
-- 06-deployments-vpn.yaml
-- 07-middlewares.yaml
-- 08-traefik-dashboard-ingress.yaml
+  - 01-ingress.yaml
+  - 02-services.yaml
+  - 03-service-account.yaml
+  - 04-deployments.yaml
+  - 05-services-vpn.yaml
+  - 06-deployments-vpn.yaml
+  - 07-middlewares.yaml
+  - 08-traefik-dashboard-ingress.yaml
+  - 09-services-vpn-developer.yaml
+  - 10-deployments-vpn-developer.yaml
