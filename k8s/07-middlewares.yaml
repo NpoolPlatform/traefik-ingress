@@ -118,23 +118,18 @@ spec:
     accessControlAllowOriginList:
       - https://genesis.internal-devops.development.xpool.top
       - https://genesis.internal-devops.testing.xpool.top
-      - https://www.xpool.top
       - https://www.procyon.vip
       - https://procyon.vip
-      - https://www.npool.top
-      - https://www.npool.top:20402
-      - https://dashboard.xpool.top
       - https://dashboard.procyon.vip
-      - https://dashboard.npool.top
+      - https://www.npool.top:20402
       - https://dashboard.npool.top:20402
-      - https://procdashboard.npool.top:20402
-      - https://swagger-ui.internal-devops.development.npool.top
-      - http://traefik-webui.internal-devops.development.npool.top
-      - https://dashboard.ohhash.com
-      - https://dashboard.ohhash.com:20402
       - https://ohhash.com
       - https://www.ohhash.com
-      - https://www.ohhash.com:20402
+      - https://dashboard.ohhash.com
+      - https://admin.ohhash-production.npool.top
+      - https://api.ohhash-production.npool.top
+      - http://swagger-ui.internal-devops.development.npool.top
+      - http://traefik-webui.internal-devops.development.npool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
