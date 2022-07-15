@@ -135,6 +135,10 @@ spec:
       - https://ohhash.com
       - https://www.ohhash.com
       - https://www.ohhash.com:20402
+      - https://admin.ohhash-production.npool.top
+      - https://admin.procyon-japan-production.npool.top
+      - https://admin.jh-testing.npool.top
+      - https://admin.singapore-testing.npool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
