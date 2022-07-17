@@ -121,14 +121,14 @@ spec:
       - https://www.procyon.vip
       - https://procyon.vip
       - https://dashboard.procyon.vip
+      - https://admin.japan-procyon-production.npool.top
       - https://www.npool.top:20402
       - https://dashboard.npool.top:20402
+      - https://admin.jh-testing.npool.top:20402
       - https://ohhash.com
       - https://www.ohhash.com
       - https://dashboard.ohhash.com
       - https://admin.ohhash-production.npool.top
-      - https://admin.procyon-japan-production.npool.top
-      - https://admin.jh-testing.npool.top
       - https://admin.singapore-testing.npool.top
       - http://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
