@@ -45,7 +45,7 @@ pipeline {
 
         nodejs('nodejs') {
           sh 'cd .traefik/webui; npm install'
-          sh 'cd .traefik/webui; NODE_ENV=production APP_ENV=production PLATFORM_URL=http://traefik-webui.$TARGET_ENV.npool.top/traefik/dashboard APP_API=http://traefik-api.$TARGET_ENV.npool.top/traefik/api APP_PUBLIC_PATH=traefik/dashboard npm run build-quasar'
+          sh 'cd .traefik/webui; NODE_ENV=production APP_ENV=production PLATFORM_URL=http://traefik-webui.internal-devops.$TARGET_ENV.npool.top/traefik/dashboard APP_API=http://traefik-api.internal-devops.$TARGET_ENV.npool.top/traefik/api APP_PUBLIC_PATH=traefik/dashboard npm run build-quasar'
           sh 'mkdir -p .webui/static; cp .traefik/webui/dist/spa/* .webui/static -rf'
           sh 'cp Dockerfile.webui .webui/Dockerfile'
           sh 'cp nginx.conf.template .webui/nginx.conf.template'
@@ -97,7 +97,7 @@ pipeline {
       }
 
       steps {
-        sh 'sed -i "s/development.npool.top/$TARGET_ENV.npool.top/g" k8s/08-traefik-dashboard-ingress.yaml'
+        sh 'sed -i "s/internal-devops.development.npool.top/$TARGET_ENV.npool.top/g" k8s/08-traefik-dashboard-ingress.yaml'
         sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/04-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
         sh 'kubectl apply -f k8s/01-ingress.yaml'
