@@ -11,7 +11,7 @@ metadata:
     traefik.ingress.kubernetes.io/router.middlewares: kube-system-common-headers@kubernetescrd
 spec:
   rules:
-    - host: traefik-webui.internal-devops.development.npool.top
+    - host: traefik-webui.development.npool.top
       http:
         paths:
           - path: /traefik/dashboard
@@ -35,7 +35,7 @@ metadata:
       kube-system-common-headers@kubernetescrd
 spec:
   rules:
-    - host: traefik-api.internal-devops.development.npool.top
+    - host: traefik-api.development.npool.top
       http:
         paths:
           - path: /traefik/api
