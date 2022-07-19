@@ -5,7 +5,8 @@ metadata:
   name: traefik
   labels:
     app: traefik
-
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
 spec:
   replicas: 1
   selector:
