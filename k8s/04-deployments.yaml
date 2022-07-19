@@ -39,6 +39,9 @@ spec:
             - --providers.kubernetesingress
             - --providers.kubernetescrd
             - --providers.kubernetesingress.ingressclass=traefik-internet
+            - --tracing.jaeger=true
+            - --tracing.jaeger.samplingServerURL=http://localhost:5778/sampling
+            - --tracing.jaeger.localAgentHostPort=localhost:6831
           ports:
             - name: web
               containerPort: 80
