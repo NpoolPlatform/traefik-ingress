@@ -9,7 +9,6 @@ spec:
       - X-App-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -21,7 +20,6 @@ spec:
       - X-User-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -33,7 +31,6 @@ spec:
       - X-Lang-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -45,7 +42,6 @@ spec:
       - X-App-Login-Token
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -57,7 +53,6 @@ spec:
       - X-App-ID
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -71,7 +66,6 @@ spec:
       - X-App-Login-Token
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -82,6 +76,7 @@ spec:
     accessControlAllowCredentials: true
     accessControlAllowHeaders:
       - X-App-ID
+      - X-Lang-ID
       - X-User-ID
       - X-App-Login-Token
       - X-Locale
@@ -97,6 +92,7 @@ spec:
       - Authorization
     accessControlExposeHeaders:
       - X-App-ID
+      - X-Lang-ID
       - X-User-ID
       - X-App-Login-Token
       - X-Locale
@@ -121,27 +117,27 @@ spec:
       - PATCH
     accessControlAllowOriginList:
       - https://genesis.internal-devops.development.xpool.top
+      - http://genesis.internal-devops.development.xpool.top
       - https://genesis.internal-devops.testing.xpool.top
-      - https://www.xpool.top
       - https://www.procyon.vip
       - https://procyon.vip
-      - https://www.npool.top
-      - https://www.npool.top:20402
-      - https://dashboard.xpool.top
       - https://dashboard.procyon.vip
-      - https://dashboard.npool.top
-      - https://dashboard.npool.top:20402
-      - https://swagger-ui.internal-devops.development.npool.top
-      - http://traefik-webui.internal-devops.development.npool.top
-      - https://dashboard.ohhash.com
+      - https://admin.japan-procyon-production.npool.top
+      - https://dashboard.procyon.npool.top:20402
+      - https://admin.jh-testing.npool.top:20402
       - https://ohhash.com
       - https://www.ohhash.com
-      - https://www.ohhash.com:20402
+      - https://www.ohhash.npool.top:20402
+      - https://dashboard.ohhash.com
+      - https://dashboard.ohhash.npool.top:20402
+      - https://admin.ohhash-production.npool.top
+      - https://admin.singapore-testing.npool.top
+      - http://swagger-ui.internal-devops.development.npool.top
+      - http://traefik-webui.internal-devops.development.npool.top
     accessControlMaxAge: 100
     addVaryHeader: true
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
@@ -153,7 +149,6 @@ spec:
     replacement: https://${1}:20402/${2}
 
 ---
-
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:

@@ -5,7 +5,8 @@ metadata:
   name: traefik
   labels:
     app: traefik
-
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
 spec:
   replicas: 1
   selector:
@@ -38,13 +39,10 @@ spec:
             - --entrypoints.traefik.Address=:38080
             - --providers.kubernetesingress
             - --providers.kubernetescrd
-#            - --certificatesResolvers.ali.acme.dnsChallenge.provider=alidns
-#            - --certificatesResolvers.ali.acme.email=tanghong@1674558446506420.onaliyun.com
-#            - --certificatesResolvers.ali.acme.storage=/etc/acme/acme.json
-            # Please note that this is the staging Let's Encrypt server.
-            # Once you get things working, you should remove that whole line altogether.
-#            - --certificatesresolvers.myresolver.acme.caserver=https://acme-staging-v02.api.letsencrypt.org/directory
             - --providers.kubernetesingress.ingressclass=traefik-internet
+            - --tracing.jaeger=true
+            - --tracing.jaeger.samplingServerURL=http://localhost:5778/sampling
+            - --tracing.jaeger.localAgentHostPort=localhost:6831
           ports:
             - name: web
               containerPort: 80
