@@ -46,3 +46,4 @@ COPY . /go/src/github.com/traefik/traefik
 RUN mkdir /go/src/github.com/traefik/traefik/dist -p
 
 RUN GOPROXY=https://goproxy.cn,direct go generate
+
