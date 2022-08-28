@@ -116,9 +116,10 @@ spec:
       - TRACE
       - PATCH
     accessControlAllowOriginList:
-      - https://genesis.internal-devops.development.xpool.top
-      - http://genesis.internal-devops.development.xpool.top
-      - https://genesis.internal-devops.testing.xpool.top
+      - http://genesis.development.npool.top
+      - https://genesis.development.npool.top
+      - https://admin.development.npool.top
+      - https://www.procyon.xpool.top
       - https://www.procyon.vip
       - https://procyon.vip
       - https://dashboard.procyon.vip
