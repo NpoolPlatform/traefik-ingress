@@ -126,6 +126,7 @@ spec:
       - https://admin.japan-procyon-production.npool.top
       - https://dashboard.procyon.npool.top:20402
       - https://admin.jh-testing.npool.top:20402
+      - https://www.procyon.npool.top:20402
       - https://ohhash.com
       - https://www.ohhash.com
       - https://www.ohhash.npool.top:20402
