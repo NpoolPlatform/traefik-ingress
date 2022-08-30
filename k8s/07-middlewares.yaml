@@ -118,6 +118,7 @@ spec:
     accessControlAllowOriginList:
       - http://genesis.development.npool.top
       - https://genesis.development.npool.top
+      - https://genesis.japan-procyon-production.npool.top
       - https://admin.development.npool.top
       - https://www.procyon.xpool.top
       - https://www.procyon.vip
