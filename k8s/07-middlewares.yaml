@@ -137,6 +137,9 @@ spec:
       - https://admin.singapore-testing.npool.top
       - http://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
+      - https://www.lpsecretbase.com
+      - https://lpsecretbase.com
+      - https://dashboard.lpsecretbase.com
     accessControlMaxAge: 100
     addVaryHeader: true
 
