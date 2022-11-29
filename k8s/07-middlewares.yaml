@@ -128,6 +128,8 @@ spec:
       - https://dashboard.procyon.npool.top:20402
       - https://admin.jh-testing.npool.top:20402
       - https://www.procyon.npool.top:20402
+      - https://www.ohhash.xpool.top
+      - https://dashboard.ohhash.xpool.top
       - https://ohhash.com
       - https://www.ohhash.com
       - https://www.ohhash.npool.top:20402
