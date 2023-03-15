@@ -19,6 +19,7 @@ pipeline {
         expression { BUILD_TARGET == 'true' }
       }
       steps {
+        sh 'echo $ALL_PROXY, $all_proxy'
         sh 'rm .traefik -rf'
         sh 'git clone https://github.com/NpoolPlatform/traefik.git .traefik; cd .traefik; git checkout entropy-v3.0.0-beta2'
         sh 'exit 0; cp Makefile.service .traefik/Makefile'
