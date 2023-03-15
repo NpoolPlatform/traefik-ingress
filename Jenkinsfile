@@ -19,7 +19,7 @@ pipeline {
       }
       steps {
         sh 'rm .traefik -rf'
-        sh 'git clone https://github.com/NpoolPlatform/traefik.git .traefik; cd .traefik; git checkout entropy-v2.5.3'
+        sh 'git clone https://github.com/NpoolPlatform/traefik.git .traefik; cd .traefik; git checkout entropy-v3.0.0-beta2'
         sh 'cp Makefile.service .traefik/Makefile'
         sh 'cp build.Dockerfile.service .traefik/build.Dockerfile'
         sh 'cd .traefik; mkdir -p v2; cp * v2 -rf | true; rm -rf v2/v2; make generate-crd'
@@ -35,13 +35,13 @@ pipeline {
           rc=$?
           set -e
           if [ 0 -eq $rc ]; then
-            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1 | true
-            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3 | true
-            docker rmi entropypool/traefik-service:v2.5.3.1 | true
-            docker rmi entropypool/traefik-service:v2.5.3 | true
+            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v3.0.0-beta2.1 | true
+            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v3.0.0-beta2 | true
+            docker rmi entropypool/traefik-service:v3.0.0-beta2.1 | true
+            docker rmi entropypool/traefik-service:v3.0.0-beta2 | true
           fi
         '''.stripIndent())
-        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1 .'
+        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v3.0.0-beta2.1 .'
 
         nodejs('nodejs') {
           sh 'cd .traefik/webui; npm install'
@@ -55,13 +55,13 @@ pipeline {
             rc=$?
             set -e
             if [ 0 -eq $rc ]; then
-              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 | true
-              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3 | true
-              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 | true
-              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3 | true
+              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2.1 | true
+              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2 | true
+              docker rmi entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2.1 | true
+              docker rmi entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2 | true
             fi
           '''.stripIndent())
-          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1 .'
+          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2.1 .'
         }
       }
     }
@@ -74,14 +74,14 @@ pipeline {
         sh(returnStdout: true, script: '''
           set +e
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.1
+            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v3.0.0-beta2.1
             if [ $? -eq 0 ]; then
               break
             fi
           done
 
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.1
+            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v3.0.0-beta2.1
             if [ $? -eq 0 ]; then
               break
             fi
@@ -98,7 +98,7 @@ pipeline {
 
       steps {
         sh 'sed -i "s/internal-devops.development.npool.top/$TARGET_ENV.npool.top/g" k8s/08-traefik-dashboard-ingress.yaml'
-        sh 'sed -i "s/traefik-webui-development:v2.5.3.1/traefik-webui-$TARGET_ENV:v2.5.3.1/g" k8s/04-deployments.yaml'
+        sh 'sed -i "s/traefik-webui-development:v3.0.0-beta2.1/traefik-webui-$TARGET_ENV:v3.0.0-beta2.1/g" k8s/04-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
         sh 'kubectl apply -f k8s/01-ingress.yaml'
         sh 'kubectl apply -f k8s/02-services.yaml'
