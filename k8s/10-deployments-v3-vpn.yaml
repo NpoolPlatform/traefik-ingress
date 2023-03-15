@@ -1,0 +1,52 @@
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  namespace: kube-system
+  name: traefik-v3-vpn
+  labels:
+    app: traefik-v3-vpn
+  annotations:
+    "sidecar.jaegertracing.io/inject": "true"
+spec:
+    #  replicas: 1
+  selector:
+    matchLabels:
+      app: traefik-v3-vpn
+  template:
+    metadata:
+      labels:
+        app: traefik-v3-vpn
+    spec:
+      dnsPolicy: ClusterFirstWithHostNet
+      hostNetwork: true
+      serviceAccountName: traefik-ingress-controller
+      nodeSelector:
+        type: traefik-vpn
+        kubernetes.io/os: linux
+      containers:
+        - name: traefik-v3-vpn
+          # image: traefik:v2.5.3
+          image: uhub.service.ucloud.cn/entropypool/traefik-service:v3.0.0-beta2.1
+          imagePullPolicy: Always
+          args:
+            - --api.insecure
+            - --accesslog
+            - --log.level=INFO
+              # - --log.filePath=/var/log/traefik.log
+            - --entrypoints.web.Address=:8180
+            - --entrypoints.websecure.Address=:8843
+            - --entrypoints.websecure.http.tls=true
+            - --entrypoints.traefik.Address=:38180
+            - --providers.kubernetesingress
+            - --providers.kubernetescrd
+            - --providers.kubernetesingress.ingressclass=traefik-internet-v3-vpn
+            - --tracing.jaeger=true
+            - --tracing.jaeger.samplingServerURL=http://localhost:5778/sampling
+            - --tracing.jaeger.localAgentHostPort=localhost:6831
+          ports:
+            - name: web
+              containerPort: 8080
+              protocol: TCP
+            - name: websecure
+              containerPort: 8443
+              protocol: TCP

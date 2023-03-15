@@ -5,5 +5,7 @@ resources:
   - 04-deployments.yaml
   - 05-services-vpn.yaml
   - 06-deployments-vpn.yaml
+  - 09-services-v3-vpn.yaml
+  - 10-deployments-v3-vpn.yaml
   - 07-middlewares.yaml
   - 08-traefik-dashboard-ingress.yaml
