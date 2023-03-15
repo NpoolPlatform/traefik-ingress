@@ -20,9 +20,9 @@ pipeline {
       steps {
         sh 'rm .traefik -rf'
         sh 'git clone https://github.com/NpoolPlatform/traefik.git .traefik; cd .traefik; git checkout entropy-v3.0.0-beta2'
-        # sh 'cp Makefile.service .traefik/Makefile'
-        # sh 'cp build.Dockerfile.service .traefik/build.Dockerfile'
-        # sh 'cd .traefik; mkdir -p v2; cp * v2 -rf | true; rm -rf v2/v2'
+        sh 'exit 0; cp Makefile.service .traefik/Makefile'
+        sh 'exit 0; cp build.Dockerfile.service .traefik/build.Dockerfile'
+        sh 'exit 0; cd .traefik; mkdir -p v2; cp * v2 -rf | true; rm -rf v2/v2'
         sh 'cd .traefik; make generate-crd traefik-binary'
         sh 'mkdir -p .traefik-release'
         sh 'cp .traefik/dist/traefik .traefik-release'
