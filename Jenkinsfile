@@ -109,6 +109,9 @@ pipeline {
         sh 'kubectl apply -f k8s/06-deployments-vpn.yaml'
         sh 'kubectl apply -f k8s/07-middlewares.yaml'
         sh 'kubectl apply -f k8s/08-traefik-dashboard-ingress.yaml'
+        sh 'kubectl apply -f k8s/09-services-v3-vpn.yaml'
+        sh 'kubectl apply -f k8s/10-deployments-v3-vpn.yaml'
+        sh 'kubectl apply -f k8s/11-grpcweb-middleware.yaml'
       }
     }
 
