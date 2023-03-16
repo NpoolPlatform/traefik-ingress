@@ -45,7 +45,7 @@ spec:
             - --tracing.jaeger.localAgentHostPort=localhost:6831
           ports:
             - name: web
-              containerPort: 8080
+              containerPort: 8180
               protocol: TCP
             - name: websecure
               containerPort: 8443
