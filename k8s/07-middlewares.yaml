@@ -117,6 +117,7 @@ spec:
       - PATCH
     accessControlAllowOriginList:
       - https://genesis.development.npool.top
+      - https://smoketest.development.npool.top
       - https://genesis.japan-procyon-production.npool.top
       - https://admin.development.npool.top
       - https://www.procyon.xpool.top
