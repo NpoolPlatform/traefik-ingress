@@ -176,3 +176,5 @@ metadata:
   namespace: kube-system
 spec:
   opLog:
+    empty:
+      - empty
