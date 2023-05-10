@@ -1055,6 +1055,14 @@ spec:
                         type: string
                       type: array
                   type: object
+                opLog:
+                  description: OpLog holds the OpLog configuration.
+                  properties:
+                    empty:
+                      items:
+                        type: string
+                      type: array
+                  type: object
               type: object
           required:
             - metadata
