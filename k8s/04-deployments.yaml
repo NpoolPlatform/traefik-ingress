@@ -75,7 +75,7 @@ spec:
     spec:
       containers:
         - name: traefik-webui
-          image: uhub.service.ucloud.cn/entropypool/traefik-webui-development:v2.5.3.1
+          image: uhub.service.ucloud.cn/entropypool/traefik-webui-development:v2.5.3.2
           imagePullPolicy: IfNotPresent
           ports:
             - name: web
