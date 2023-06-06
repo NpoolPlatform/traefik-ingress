@@ -127,6 +127,7 @@ spec:
       - https://dashboard.procyon.vip
       - https://admin.japan-procyon-production.npool.top
       - https://dashboard.procyon.npool.top:20402
+      - https://dashboard.lpsb.npool.top:20402
       - https://admin.jh-testing.npool.top:20402
       - https://www.procyon.npool.top:20402
       - https://www.lpsb.npool.top:20402
