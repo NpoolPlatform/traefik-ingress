@@ -35,10 +35,10 @@ pipeline {
           rc=$?
           set -e
           if [ 0 -eq $rc ]; then
-            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.2 | true
+            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4 | true
           fi
         '''.stripIndent())
-        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.2 .'
+        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4 .'
 
         nodejs('nodejs') {
           sh 'cd .traefik/webui; npm install'
@@ -52,11 +52,11 @@ pipeline {
             rc=$?
             set -e
             if [ 0 -eq $rc ]; then
-              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.2 | true
+              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4 | true
               docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3.2 | true
             fi
           '''.stripIndent())
-          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.2 .'
+          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4 .'
         }
       }
     }
@@ -69,14 +69,14 @@ pipeline {
         sh(returnStdout: true, script: '''
           set +e
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.2
+            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4
             if [ $? -eq 0 ]; then
               break
             fi
           done
 
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.2
+            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4
             if [ $? -eq 0 ]; then
               break
             fi
