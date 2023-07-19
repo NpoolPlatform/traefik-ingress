@@ -116,6 +116,7 @@ spec:
       - TRACE
       - PATCH
     accessControlAllowOriginList:
+      - http://genesis.hk-cryptomore-production.npool.top
       - https://genesis.development.npool.top
       - https://smoketest.development.npool.top
       - https://genesis.japan-procyon-production.npool.top
