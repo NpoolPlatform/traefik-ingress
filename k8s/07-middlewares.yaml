@@ -141,6 +141,7 @@ spec:
       - https://dashboard.ohhash.npool.top:20402
       - https://admin.ohhash-production.npool.top
       - https://admin.singapore-testing.npool.top
+      - https://admin.hk-cryptomore-production.npool.top
       - http://swagger-ui.internal-devops.development.npool.top
       - http://traefik-webui.internal-devops.development.npool.top
       - https://www.lpsecretbase.com
