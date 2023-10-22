@@ -119,6 +119,7 @@ spec:
       - https://genesis.hk-cryptomore-production.npool.top
       - https://genesis.development.npool.top
       - https://smoketest.development.npool.top
+      - https://smoketest.jh-testing.npool.top:20402
       - https://genesis.japan-procyon-production.npool.top
       - https://admin.development.npool.top
       - https://www.procyon.xpool.top
@@ -132,6 +133,7 @@ spec:
       - https://admin.jh-testing.npool.top:20402
       - https://www.procyon.npool.top:20402
       - https://www.lpsb.npool.top:20402
+      - https://cryptomore.npool.top:20402
       - https://www.ohhash.xpool.top
       - https://dashboard.ohhash.xpool.top
       - https://ohhash.com
