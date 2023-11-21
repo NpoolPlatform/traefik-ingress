@@ -35,10 +35,10 @@ pipeline {
           rc=$?
           set -e
           if [ 0 -eq $rc ]; then
-            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4 | true
+            docker rmi uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.5 | true
           fi
         '''.stripIndent())
-        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4 .'
+        sh 'cd .traefik-release; docker build -t uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.5 .'
 
         nodejs('nodejs') {
           sh 'cd .traefik/webui; npm install'
@@ -52,11 +52,11 @@ pipeline {
             rc=$?
             set -e
             if [ 0 -eq $rc ]; then
-              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4 | true
-              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3.2 | true
+              docker rmi uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.5 | true
+              docker rmi entropypool/traefik-webui-$TARGET_ENV:v2.5.3.5 | true
             fi
           '''.stripIndent())
-          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4 .'
+          sh 'cd .webui; docker build -t uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.5 .'
         }
       }
     }
@@ -69,14 +69,14 @@ pipeline {
         sh(returnStdout: true, script: '''
           set +e
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4
+            docker push uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.5
             if [ $? -eq 0 ]; then
               break
             fi
           done
 
           while true; do
-            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.4
+            docker push uhub.service.ucloud.cn/entropypool/traefik-webui-$TARGET_ENV:v2.5.3.5
             if [ $? -eq 0 ]; then
               break
             fi
@@ -93,7 +93,7 @@ pipeline {
 
       steps {
         sh 'sed -i "s/internal-devops.development.npool.top/$TARGET_ENV.npool.top/g" k8s/08-traefik-dashboard-ingress.yaml'
-        sh 'sed -i "s/traefik-webui-development:v2.5.3.2/traefik-webui-$TARGET_ENV:v2.5.3.2/g" k8s/04-deployments.yaml'
+        sh 'sed -i "s/traefik-webui-development:v2.5.3.5/traefik-webui-$TARGET_ENV:v2.5.3.5/g" k8s/04-deployments.yaml'
         sh 'cd /etc/kubeasz; ./ezctl checkout $TARGET_ENV'
         sh 'kubectl apply -f k8s/01-ingress.yaml'
         sh 'kubectl apply -f k8s/02-services.yaml'

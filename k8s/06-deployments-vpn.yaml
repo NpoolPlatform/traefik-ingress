@@ -26,7 +26,7 @@ spec:
       containers:
         - name: traefik-vpn
           # image: traefik:v2.5.3
-          image: uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.4
+          image: uhub.service.ucloud.cn/entropypool/traefik-service:v2.5.3.5
           imagePullPolicy: Always
           args:
             - --api.insecure
