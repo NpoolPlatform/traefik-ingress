@@ -149,6 +149,12 @@ spec:
       - https://www.lpsecretbase.com
       - https://lpsecretbase.com
       - https://dashboard.lpsecretbase.com
+      - http://vpn.web3eye.jh-testing.npool.top
+      - https://vpn.web3eye.jh-testing.npool.top
+      - http://dashboard.web3eye.npool.top
+      - https://dashboard.web3eye.npool.top
+      - https://web3eye.npool.top:20402
+      - http://web3eye.npool.top:20401
     accessControlMaxAge: 100
     addVaryHeader: true
 
