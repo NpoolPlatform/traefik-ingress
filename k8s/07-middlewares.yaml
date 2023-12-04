@@ -118,6 +118,7 @@ spec:
     accessControlAllowOriginList:
       - https://genesis.hk-cryptomore-production.npool.top
       - https://genesis.development.npool.top
+      - https://genesis.jh-testing.npool.top
       - https://smoketest.development.npool.top
       - https://smoketest.jh-testing.npool.top:20402
       - https://genesis.japan-procyon-production.npool.top
