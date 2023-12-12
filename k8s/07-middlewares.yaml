@@ -156,6 +156,9 @@ spec:
       - https://dashboard.web3eye.npool.top
       - https://web3eye.npool.top:20402
       - http://web3eye.npool.top:20401
+      - https://mimo.npool.top:20402
+      - https://mimo.biz
+      - https://www.mimo.biz
     accessControlMaxAge: 100
     addVaryHeader: true
 
