@@ -159,6 +159,8 @@ spec:
       - https://mimo.npool.top:20402
       - https://mimo.biz
       - https://www.mimo.biz
+      - https://www.cryptomore.io
+      - https://cryptomore.io
     accessControlMaxAge: 100
     addVaryHeader: true
 
