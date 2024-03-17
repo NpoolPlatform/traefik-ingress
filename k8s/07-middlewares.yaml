@@ -161,6 +161,7 @@ spec:
       - https://www.mimo.biz
       - https://www.cryptomore.io
       - https://cryptomore.io
+      - https://www.hashrate-demo.npool.top:20402
     accessControlMaxAge: 100
     addVaryHeader: true
 
