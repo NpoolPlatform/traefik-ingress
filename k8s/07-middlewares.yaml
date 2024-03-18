@@ -162,8 +162,8 @@ spec:
       - https://www.cryptomore.io
       - https://cryptomore.io
       - https://www.hashrate-demo.npool.top:20402
-      - https://www.epool.top:20402
-      - https://epool.top:20402
+      - https://www.epool.tech:20402
+      - https://epool.tech:20402
     accessControlMaxAge: 100
     addVaryHeader: true
 
