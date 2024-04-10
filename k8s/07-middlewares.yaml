@@ -155,6 +155,7 @@ spec:
       - http://dashboard.web3eye.npool.top
       - https://dashboard.web3eye.npool.top
       - https://testnet.web3eye.io
+      - http://dashboard.testnet.web3eye.io
       - https://web3eye.npool.top:20402
       - http://web3eye.npool.top:20401
       - https://mimo.npool.top:20402
