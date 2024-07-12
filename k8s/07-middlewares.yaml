@@ -167,6 +167,12 @@ spec:
       - https://www.epool.tech:20402
       - https://epool.tech:20402
       - https://dashboard.epool.tech:20402
+      - https://xhash.npool.top:20402
+      - https://www.xhash.npool.top:20402
+      - https://dashboard.xhash.npool.top:20402
+      - https://xhash.ai
+      - https://www.xhash.ai
+      - https://dashboard.xhash.ai
     accessControlMaxAge: 100
     addVaryHeader: true
 
