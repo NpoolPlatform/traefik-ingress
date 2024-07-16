@@ -117,6 +117,7 @@ spec:
       - PATCH
     accessControlAllowOriginList:
       - https://genesis.hk-cryptomore-production.npool.top
+      - http://genesis.tokyo-xhash-production.npool.top
       - https://genesis.development.npool.top
       - https://genesis.jh-testing.npool.top
       - https://smoketest.development.npool.top
